@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper & Ink – Card Designs</title>
+<meta name="description" content="A showcase of original card designs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eceef7; --surface:#ffffff; --ink:#1b2250; --muted:#5a6089; --line:#d3d7ea; --accent:#e4572e;
+  --display:"Bricolage Grotesque","Trebuchet MS",sans-serif; --body:"DM Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#14172e;--surface:#1e2242;--ink:#eef0ff;--muted:#a3a9d4;--line:#343a6b;--accent:#ff7a4d}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
+.logo{font:800 1.25rem var(--display);text-decoration:none;letter-spacing:-.01em}
+header.top a.contact{font-weight:500;text-decoration:none;border-bottom:2px solid var(--accent)}
+
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;padding:2.5rem 0 3.5rem}
+.hero h1{font:800 clamp(2.4rem,6vw,4.4rem)/1 var(--display);letter-spacing:-.03em;margin:0 0 1rem}
+.hero p{max-width:34ch;color:var(--muted);font-size:1.1rem;margin:0 0 1.5rem}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.75rem 1.4rem;border-radius:999px;font-weight:500;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.fan{position:relative;height:340px}
+.fan .card{position:absolute;width:190px;top:0;box-shadow:0 14px 30px -12px rgba(20,23,60,.45)}
+.fan .card:nth-child(1){left:2%;transform:rotate(-9deg);top:30px}
+.fan .card:nth-child(2){left:30%;transform:rotate(2deg);z-index:2}
+.fan .card:nth-child(3){left:58%;transform:rotate(11deg);top:36px}
+
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.chip{font:500 .95rem var(--body);background:transparent;color:var(--ink);border:2px solid var(--line);border-radius:999px;padding:.35rem 1rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.75rem;padding-bottom:4rem}
+.item{background:none;border:0;padding:0;text-align:left;cursor:pointer;color:inherit;font:inherit}
+.item .card{transition:transform .2s}
+.item:hover .card{transform:translateY(-6px) rotate(-1deg)}
+.item h3{font:800 1.1rem var(--display);margin:.75rem 0 0}
+.item span.meta{color:var(--muted);font-size:.95rem}
+.card{display:block;width:100%;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--surface);box-shadow:0 8px 20px -10px rgba(20,23,60,.4)}
+.card svg,.card img{display:block;width:100%;height:100%;object-fit:cover}
+
+.about{background:var(--surface);padding:3rem 0}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.about h2{font:800 1.8rem var(--display);margin:0;letter-spacing:-.02em}
+.about p{margin:0;color:var(--muted)}
+footer{padding:2rem 0;color:var(--muted);font-size:.9rem}
+
+dialog{border:0;padding:0;border-radius:14px;background:var(--surface);color:var(--ink);width:min(760px,92vw);max-height:92vh;overflow:auto}
+dialog::backdrop{background:rgba(10,12,35,.6)}
+.modal{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding:1.5rem}
+.modal h2{font:800 1.8rem/1.1 var(--display);margin:.25rem 0 .5rem;letter-spacing:-.02em}
+.modal .price{font:800 1.4rem var(--display);margin:.75rem 0 1rem}
+.modal .row{display:flex;gap:.6rem;flex-wrap:wrap}
+.close{position:absolute;top:.6rem;right:.8rem;background:none;border:0;font-size:1.8rem;line-height:1;color:var(--ink);cursor:pointer}
+@media (max-width:760px){
+  .hero,.about .wrap,.modal{grid-template-columns:1fr}
+  .fan{height:290px}.fan .card{width:150px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#">Paper &amp; Ink</a>
+    <a class="contact" id="contactLink" href="#">Get in touch</a>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Cards with something to say.</h1>
+      <p>Original card designs for birthdays, thank-yous and everything in between. Browse the collection and tell me which ones you want.</p>
+      <a class="btn" href="#collection">Browse the cards</a>
+    </div>
+    <div class="fan" id="fan" aria-hidden="true"></div>
+  </section>
+
+  <section id="collection">
+    <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+</div>
+
+<section class="about">
+  <div class="wrap">
+    <h2>How ordering works</h2>
+    <p>Pick a card, then use the Buy or Enquire button. Custom wording, names and bulk orders are welcome. Just ask.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">&copy; <span id="yr"></span> Paper &amp; Ink. All designs are original.</div></footer>
+
+<dialog id="dlg" aria-labelledby="mTitle">
+  <button class="close" id="closeBtn" aria-label="Close">&times;</button>
+  <div class="modal">
+    <div class="card" id="mArt"></div>
+    <div>
+      <span class="meta" id="mCat" style="color:var(--muted)"></span>
+      <h2 id="mTitle"></h2>
+      <p id="mDesc" style="color:var(--muted);margin:0"></p>
+      <div class="price" id="mPrice"></div>
+      <div class="row" id="mActions"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ============ EDIT THIS SECTION ============ */
+const EMAIL = "you@example.com";   // where enquiries go
+const CURRENCY = "₹";               // price symbol
+
+/* Each card: set `img` to a file path (e.g. "images/rose.webp") to use your own artwork.
+   Leave `img` empty to show the placeholder design.
+   Set `buy` to a payment link (Stripe, PayPal, Razorpay, Gumroad, Etsy...). Leave empty for an "Enquire" button. */
+const CARDS = [
+  {id:"sunny",  title:"Sunny Side Up",   cat:"Birthday", price:60, bg:"#ffc83d", fg:"#1b2250", motif:"sun",     line:"Happy Birthday",  desc:"A bright, cheerful card for anyone who needs a bit of sunshine on their big day.", img:"", buy:""},
+  {id:"leafy",  title:"Thank You Very Much", cat:"Thank you", price:55, bg:"#1f7a6d", fg:"#f6f1e3", motif:"leaf",  line:"Thank you",       desc:"Hand-drawn style leaves with a warm, grateful message inside.", img:"", buy:""},
+  {id:"waves",  title:"Ride the Wave",   cat:"Congrats", price:60, bg:"#2f5bea", fg:"#ffffff", motif:"wave",    line:"Congratulations", desc:"Bold blue waves to celebrate a new job, a graduation or a big win.", img:"", buy:""},
+  {id:"dots",   title:"Confetti Pop",    cat:"Birthday", price:50, bg:"#ff6b8b", fg:"#ffffff", motif:"dots",    line:"Let's party",     desc:"Playful polka dots for a birthday with lots of noise and cake.", img:"", buy:""},
+  {id:"stripe", title:"Little Hello",    cat:"Everyday", price:45, bg:"#7b4fd6", fg:"#fff4d6", motif:"stripes", line:"Thinking of you", desc:"A simple stripe design for when you just want to say hi.", img:"", buy:""},
+  {id:"moon",   title:"Goodnight Moon",  cat:"Everyday", price:55, bg:"#1b2250", fg:"#ffd96b", motif:"sun",     line:"Sweet dreams",    desc:"A deep midnight card for bedtime wishes and new-baby greetings.", img:"", buy:""},
+  {id:"bloom",  title:"Wild Bloom",      cat:"Thank you", price:65, bg:"#f28c5b", fg:"#fff7ea", motif:"leaf",   line:"With gratitude",  desc:"Warm orange botanicals, printed on textured paper.", img:"", buy:""},
+  {id:"tide",   title:"Seaside Wishes",  cat:"Congrats", price:60, bg:"#5ac4c4", fg:"#10304a", motif:"wave",    line:"Well done",       desc:"A light, breezy card for good news of any kind.", img:"", buy:""}
+];
+/* ============================================ */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function motif(c){
+  const f = c.fg;
+  switch(c.motif){
+    case "sun": return `<circle cx="100" cy="95" r="42" fill="${f}"/>` + [...Array(12)].map((_,i)=>`<rect x="97" y="22" width="6" height="18" rx="3" fill="${f}" transform="rotate(${i*30} 100 95)"/>`).join("");
+    case "leaf": return [[60,110,-30],[100,90,0],[140,110,30],[80,150,-15],[120,150,15]].map(([x,y,r])=>`<ellipse cx="${x}" cy="${y}" rx="16" ry="38" fill="${f}" opacity=".9" transform="rotate(${r} ${x} ${y})"/>`).join("");
+    case "wave": return [60,85,110,135].map((y,i)=>`<path d="M-10 ${y} Q 20 ${y-24} 50 ${y} T 110 ${y} T 170 ${y} T 230 ${y}" fill="none" stroke="${f}" stroke-width="9" stroke-linecap="round" opacity="${1-i*.15}"/>`).join("");
+    case "dots": return [...Array(20)].map((_,i)=>{const x=25+(i%5)*38+((Math.floor(i/5)%2)*19),y=40+Math.floor(i/5)*34;return `<circle cx="${x}" cy="${y}" r="${7+(i%3)*3}" fill="${f}" opacity="${.5+(i%4)*.15}"/>`}).join("");
+    case "stripes": return [...Array(6)].map((_,i)=>`<rect x="-10" y="${20+i*24}" width="220" height="11" fill="${f}" opacity="${.35+i*.1}" transform="rotate(-8 100 100)"/>`).join("");
+  }
+  return "";
+}
+function art(c){
+  if(c.img) return `<img src="${esc(c.img)}" alt="${esc(c.title)} card" loading="lazy">`;
+  return `<svg viewBox="0 0 200 250" role="img" aria-label="${esc(c.title)} card"><rect width="200" height="250" fill="${c.bg}"/>${motif(c)}<text x="100" y="218" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="19" fill="${c.fg}">${esc(c.line)}</text></svg>`;
+}
+
+/* hero fan: first three cards */
+$("#fan").innerHTML = CARDS.slice(0,3).map(c=>`<div class="card">${art(c)}</div>`).join("");
+
+/* filters */
+const cats = ["All", ...new Set(CARDS.map(c=>c.cat))];
+let active = "All";
+function renderFilters(){
+  $("#filters").innerHTML = cats.map(k=>`<button class="chip" aria-pressed="${k===active}" data-cat="${esc(k)}">${esc(k)}</button>`).join("");
+}
+function renderGrid(){
+  const list = CARDS.filter(c=>active==="All"||c.cat===active);
+  $("#grid").innerHTML = list.map(c=>`<button class="item" data-id="${c.id}"><span class="card">${art(c)}</span><h3>${esc(c.title)}</h3><span class="meta">${CURRENCY}${c.price} · ${esc(c.cat)}</span></button>`).join("");
+}
+$("#filters").addEventListener("click",e=>{
+  const b=e.target.closest(".chip"); if(!b) return;
+  active=b.dataset.cat; renderFilters(); renderGrid();
+});
+
+/* modal */
+const dlg = $("#dlg");
+$("#grid").addEventListener("click",e=>{
+  const b=e.target.closest(".item"); if(!b) return;
+  const c=CARDS.find(x=>x.id===b.dataset.id);
+  $("#mArt").innerHTML=art(c);
+  $("#mCat").textContent=c.cat;
+  $("#mTitle").textContent=c.title;
+  $("#mDesc").textContent=c.desc;
+  $("#mPrice").textContent=CURRENCY+c.price;
+  const subject=encodeURIComponent("Enquiry: "+c.title);
+  const enquire=`<a class="btn ${c.buy?"alt":""}" href="mailto:${EMAIL}?subject=${subject}">Enquire</a>`;
+  $("#mActions").innerHTML=(c.buy?`<a class="btn" href="${esc(c.buy)}" target="_blank" rel="noopener">Buy now</a>`:"")+enquire;
+  dlg.showModal();
+});
+$("#closeBtn").onclick=()=>dlg.close();
+dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
+
+$("#contactLink").href="mailto:"+EMAIL;
+$("#yr").textContent=new Date().getFullYear();
+renderFilters(); renderGrid();
+</script>
+</body>
+</html>
